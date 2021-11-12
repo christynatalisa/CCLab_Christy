@@ -1,0 +1,59 @@
+title{
+  font-family: "Quicksand";
+  src: url("https://fonts.google.com/share?selection.family=Quicksand");
+}
+
+body {
+  font-family: "Quicksand";
+  text-align: center;
+  background-color: black;
+  background-image: url("images/bg.png");
+}
+
+h1 {
+  color: white;
+  font-size: 48px;
+
+}
+
+h2 {
+  color: white;
+}
+
+
+.lyrics {
+  color: white;
+  font-family: "Quicksand";
+  font-size: 24px;
+}
+
+.lyrics:hover{
+  color: DarkCyan;
+}
+
+/* visited link */
+a{
+
+}
+a {
+  color: White;
+  text-declaration: line-through;
+  font-size: 38px;
+}
+
+
+/* mouse over link */
+a:hover {
+  color: DarkCyan;
+  transition: color 1s ease-in-out;
+}
+
+/* selected link */
+a:active {
+  color: #FF00FF;
+}
+
+#logo {
+  margin-left: 200px;
+
+}

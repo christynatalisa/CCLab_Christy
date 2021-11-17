@@ -1,16 +1,9 @@
 #canvasContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  left: 100px;
-  top: 100px;
+  position: absolute;
+  top: calc(50% - 200px);
+  left: calc(50% - 355px);
 }
 
-canvas {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 div {
 	width: 300px;

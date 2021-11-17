@@ -1,5 +1,25 @@
-#p5-canvas {
-  position: absolute;
+#canvasContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   left: 100px;
   top: 100px;
+}
+
+canvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div {
+	width: 300px;
+	height: 250px;
+
+	border-width: 1px;
+	border-style: solid;
+	border-color: gray;
+
+	padding: 30px 120px 0px 50px;
+	margin: 50px 80px;
 }

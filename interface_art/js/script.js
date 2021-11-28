@@ -20,6 +20,7 @@ function setup() {
 }
 
 function draw() {
+  scale(0.5)；
   const r = rSlider.value();
   const g = gSlider.value();
   const b = bSlider.value();

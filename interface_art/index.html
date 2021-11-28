@@ -8,20 +8,51 @@
 
   </head>
   <body>
-    <input type="range" id="opacity" min="0" max="255">
+
+    <div>
+  <input type="checkbox" id="artwork" name="Artwork 1"
+         checked>
+  <label for="scales">Artwork 1</label>
+</div>
+
+<div>
+  <input type="checkbox" id="artwork" name="Artwork 2">
+  <label for="horns">Artwork 2</label>
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
     <div id="canvasContainer">
-      <script class='canvas' src="js/script.js"></script>
+      <script src="js/artwork1.js"></script>
+    </div>
+
+    <div id="canvasContainer">
+      <script src="js/artwork2.js"></script>
     </div>
 
 
-	<div class="box"> 01 </div>
-	<div class="box"> 02 </div>
-	<div class="box"> 03 </div>
-	<div class="box"> 04 </div>
-	<div class="box"> 05 </div>
-<div class="box"> 06 </div>
-/* more divs ... */
+    <div class="flex-container">
+
+  	<div class="box" id="box1"> 01
+      <script src="js/artwork1.js"></script>
+    </div>
+
+  	<div class="box"> 02
+      <script src="js/artwork2.js"></script>
+    </div>
+
+    </div>
+
 
 
   </body>

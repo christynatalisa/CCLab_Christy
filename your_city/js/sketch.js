@@ -22,6 +22,7 @@ function setup() {
   sliderX = createSlider(0, 255, 0, 1);
   sliderX.position(500, 600);
   sliderX.style("width", "500 px");
+  sliderY.id('sliderX');
 
   sliderY = createSlider(0, 255, 0, 1);
   sliderY.position(560, 490);

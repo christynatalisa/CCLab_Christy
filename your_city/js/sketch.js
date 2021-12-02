@@ -19,12 +19,12 @@ function preload() {
 function setup() {
   createCanvas(700, 700);
 
-  sliderX = createSlider(0, 255, 0, 1);
+  sliderX = createSlider(0, 500, 0, 1);
   sliderX.position(500, 600);
   sliderX.style("width", "500 px");
-  sliderY.id('sliderX');
+  sliderX.id('sliderX');
 
-  sliderY = createSlider(0, 255, 0, 1);
+  sliderY = createSlider(0, 500, 0, 1);
   sliderY.position(560, 490);
   sliderY.style("transform", "rotate(90deg)");
   sliderY.id('sliderY');

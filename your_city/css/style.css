@@ -1,7 +1,21 @@
 #sliderY {
   width: 600px;
+
 }
 
 #sliderX {
   width: 600px;
+
+}
+
+body {
+background-color: #000000;
+align-items: center;
+}
+
+p {
+  font-family: "Quicksand";
+  src: url("https://fonts.google.com/share?selection.family=Quicksand");
+
+  color: white;
 }

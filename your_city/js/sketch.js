@@ -17,40 +17,40 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(700, 700);
+  createCanvas(1400, 700);
 
   sliderX = createSlider(0, 500, 0, 1);
-  sliderX.position(500, 600);
+  sliderX.position(550, 690);
   sliderX.style("width", "500 px");
-  sliderX.id('sliderX');
+  sliderX.id("sliderX");
 
   sliderY = createSlider(0, 500, 0, 1);
-  sliderY.position(560, 490);
+  sliderY.position(1000, 470);
   sliderY.style("transform", "rotate(90deg)");
-  sliderY.id('sliderY');
+  sliderY.id("sliderY");
 
   buttonP = createButton("petronas");
-  buttonP.position(30, 30);
+  buttonP.position(250, 90);
   buttonP.mousePressed(towerImgA);
 
   buttonB = createButton("burj khalifa");
-  buttonB.position(110, 30);
+  buttonB.position(330, 90);
   buttonB.mousePressed(towerImgB);
 
   buttonB = createButton("gran torre");
-  buttonB.position(200, 30);
+  buttonB.position(420, 90);
   buttonB.mousePressed(towerImgC);
 
   buttonB = createButton("chrysler");
-  buttonB.position(290, 30);
+  buttonB.position(510, 90);
   buttonB.mousePressed(towerImgD);
 
-  buttonB = createButton("burj khalifa");
-  buttonB.position(380, 30);
+  buttonB = createButton("taj mahal");
+  buttonB.position(590, 90);
   buttonB.mousePressed(towerImgE);
 
   buttonB = createButton("Save Here");
-  buttonB.position(80, 600);
+  buttonB.position(720, 750);
   buttonB.mousePressed(saveCity);
 }
 
@@ -70,8 +70,9 @@ function mousePressed() {
 }
 
 class Building {
-  constructor(img, x, y) {
-    // GH: every building object stores the image it will show
+  constructor(img, x, y, w, h) {
+    this.width = w;
+    this.height = h;
     this.img = img;
     this.size = 20;
     this.color = color(255, 0, 0);
@@ -81,63 +82,64 @@ class Building {
 
   display() {
     // GH: added
-    image(this.img, this.x, this.y, 100, 300);
+    image(this.img, this.x, this.y, this.width, this.height);
   }
 
   move() {}
 }
 
 function towerImgA() {
-  let petronasBuilding = new Building(imgs[0], 50, 300);
+  let petronasBuilding = new Building(imgs[0], 50, 300, 120, 400);
   buildings.push(petronasBuilding);
-  /*
-  console.log('yay');
-  let Xval = sliderX.value();
-  let Yval = sliderY.value();
-  //image(img1, Xval, Yval, 100, 300);
-  */
 }
 
 function towerImgB() {
-  let burjBuilding = new Building(imgs[1], 50, 300);
+  let burjBuilding = new Building(imgs[1], 50, 300, 200, 360);
   buildings.push(burjBuilding);
-  // let Xval = sliderX.value();
-  // let Yval = sliderY.value();
-  // //image(img2, Xval, Yval, 100, 300);
 }
 
 function towerImgC() {
-  let granBuilding = new Building(imgs[2], 30, 200);
+  let granBuilding = new Building(imgs[2], 30, 200, 120, 400);
   buildings.push(granBuilding);
 }
 
 function towerImgD() {
-  let chryBuilding = new Building(imgs[3], 200, 300);
+  let chryBuilding = new Building(imgs[3], 200, 300, 280, 480);
   buildings.push(chryBuilding);
 }
 function towerImgE() {
-  let burjBuilding = new Building(imgs[4], 50, 300);
-  buildings.push(burjBuilding);
+  let tajBuilding = new Building(imgs[4], 150, 300, 240, 440);
+  buildings.push(tajBuilding);
 }
 
 function saveCity() {
+  saveCanvas('myCanvas', 'png');
+  hori = '';
+  verti = '';
 }
 
 function draw() {
+  //scale(2);
   background(0);
+  //console.log(mouseX, mouseY);
 
   noStroke();
   fill(92, 115, 120);
-  rect(70, 200, 500, 300, 10, 10);
-  image(logo, 424, 104, 150, 150);
-  fill('White');
+  rect(240, 120, 1000, 450, 10, 10);
+  image(logo, 1050, 7, 180, 180);
 
-  text("Horizontal Slider:", 500, 580);
-  text("Vertical Slider:", 590, 420);
+  fill("White");
+  //text("Design Your City, select builings here: ", 120, 30);
 
-    text("Done designing Your City?", 80, 580);
+  let  hori = text("Horizontal Slider:", 300, 700);
 
+  push();
+  translate(1280, 270);
+  rotate(radians(-90));
+  let verti = text("Vertical Slider:", 0, 0);
+  pop();
 
+  text("Done designing Your City?", 300, 630);
 
   //image(img3, Xval, Yval, 100, 300);
 

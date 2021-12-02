@@ -17,7 +17,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1400, 700);
+  createCanvas(1400, 800);
 
   sliderX = createSlider(0, 500, 0, 1);
   sliderX.position(550, 690);
@@ -50,7 +50,7 @@ function setup() {
   buttonB.mousePressed(towerImgE);
 
   buttonB = createButton("Save Here");
-  buttonB.position(720, 750);
+  buttonB.position(720, 770);
   buttonB.mousePressed(saveCity);
 }
 
@@ -131,7 +131,7 @@ function draw() {
   fill("White");
   //text("Design Your City, select builings here: ", 120, 30);
 
-  let  hori = text("Horizontal Slider:", 300, 700);
+  let  hori = text("Horizontal Slider:", 300, 630);
 
   push();
   translate(1280, 270);
@@ -139,7 +139,7 @@ function draw() {
   let verti = text("Vertical Slider:", 0, 0);
   pop();
 
-  text("Done designing Your City?", 300, 630);
+  text("Done designing Your City?", 680, 680);
 
   //image(img3, Xval, Yval, 100, 300);
 

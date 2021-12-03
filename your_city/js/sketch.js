@@ -4,6 +4,7 @@ let sliderSize;
 
 let button;
 let frame = false;
+let tutorial = false;
 
 let imgs = []; // GH: array of images
 let nextImg = 0; // GH: what the next image is
@@ -20,11 +21,18 @@ function preload() {
 
   logo = loadImage("assets/yourcity.png");
   spotlight = loadImage("assets/spotlight.png");
+  sizetut = loadImage("assets/sizetut.png");
+  loctut = loadImage("assets/loctut.png");
 
 }
 
 function setup() {
   createCanvas(1400, 800);
+
+  checkbox = createCheckbox('', false);
+  checkbox.changed(tutorialfunc);
+  checkbox.position(130, 120);
+  checkbox.id("checkmark");
 
   sliderX = createSlider(0, 1300, 0, 1);
   sliderX.position(550, 690);
@@ -41,43 +49,46 @@ function setup() {
   sliderSize.style("transform", "rotate(270deg)");
   sliderSize.id("sliderSize");
 
+  buttonT = createButton("tutorial");
+  buttonT.position(130, 90);
+  buttonT.id("tutorial");
+  buttonT.mousePressed(tutorialfunc);
+
   buttonA = createButton("petronas");
   buttonA.position(250, 90);
-  buttonA.id('petronas');
+  buttonA.id("petronas");
   buttonA.mousePressed(towerImgA);
 
   buttonB = createButton("burj khalifa");
-  buttonB.position(330, 90);
-  buttonB.id('burj');
+  buttonB.position(360, 90);
+  buttonB.id("burj");
   buttonB.mousePressed(towerImgB);
 
-  buttonC = createButton("gran torre");
-  buttonC.position(420, 90);
-  buttonC.id('gran');
+  buttonC = createButton("pisa tower");
+  buttonC.position(480, 90);
+  buttonC.id("pisa");
   buttonC.mousePressed(towerImgC);
 
   buttonD = createButton("chrysler");
-  buttonD.position(510, 90);
-  buttonD.id('chry');
+  buttonD.position(595, 90);
+  buttonD.id("chry");
   buttonD.mousePressed(towerImgD);
 
   buttonE = createButton("taj mahal");
-  buttonE.position(590, 90);
-  buttonE.id('taj');
+  buttonE.position(695, 90);
+  buttonE.id("taj");
   buttonE.mousePressed(towerImgE);
 
   buttonF = createButton("space needle");
-  buttonF.position(670, 90);
-  buttonF.id('space');
+  buttonF.position(800, 90);
+  buttonF.id("space");
   buttonF.mousePressed(towerImgF);
 
   buttonG = createButton("Save Here");
-  buttonG.position(720, 770);
-  buttonG.id('save');
+  buttonG.position(700, 770);
+  buttonG.id("save");
   buttonG.mousePressed(saveCity);
-
 }
-
 
 class Building {
   constructor(img, x, y, w, h) {
@@ -93,26 +104,39 @@ class Building {
 
   display() {
     // GH: added
+    // scale(this.scale);
+    // image(this.img, this.x, this.y, this.width, this.height);
+
+    push();
+    translate(this.x, this.y);
     scale(this.scale);
-    image(this.img, this.x, this.y, this.width, this.height);
+    image(this.img, 0, 0, this.width, this.height);
+    pop();
   }
 
   move() {}
 }
 
+
+function tutorialfunc() {
+
+  tutorial = true;
+
+}
+
 function towerImgA() {
-  let petronasBuilding = new Building(imgs[0], 50, 300, 120, 400);
+  let petronasBuilding = new Building(imgs[0], 50, 300, 150, 400);
   buildings.push(petronasBuilding);
 }
 
 function towerImgB() {
-  let burjBuilding = new Building(imgs[1], 50, 300, 200, 360);
+  let burjBuilding = new Building(imgs[1], 50, 300, 300, 360);
   buildings.push(burjBuilding);
 }
 
 function towerImgC() {
-  let granBuilding = new Building(imgs[2], 30, 200, 120, 400);
-  buildings.push(granBuilding);
+  let pisaBuilding = new Building(imgs[2], 30, 200, 240, 300);
+  buildings.push(pisaBuilding);
 }
 
 function towerImgD() {
@@ -120,7 +144,7 @@ function towerImgD() {
   buildings.push(chryBuilding);
 }
 function towerImgE() {
-  let tajBuilding = new Building(imgs[4], 150, 300, 240, 440);
+  let tajBuilding = new Building(imgs[4], 150, 300, 270, 300);
   buildings.push(tajBuilding);
 }
 
@@ -142,96 +166,76 @@ function saveCity() {
   //saveCanvas('myCanvas', 'png');
   //frame = True;
   //if (frame == True) {
-    framefunction();
-    saveCanvas('myCanvas', 'png');
-    frame = true;
+  framefunction();
+  saveCanvas("myCanvas", "png");
+  frame = true;
 
-    spotlight1 = image(spotlight, 300, 10, 300, 300);
-    spotlight2 = image(spotlight, 500, 10, 300, 300);
-    spotlight3 = image(spotlight, 700, 10, 300, 300);
+  let petronasBtn = document.getElementById("petronas");
+  petronasBtn.style.display = "none";
+  let burjBtn = document.getElementById("burj");
+  burjBtn.style.display = "none";
+  let pisaBtn = document.getElementById("pisa");
+  pisaBtn.style.display = "none";
+  let chryBtn = document.getElementById("chry");
+  chryBtn.style.display = "none";
+  let tajBtn = document.getElementById("taj");
+  tajBtn.style.display = "none";
+  let spaceBtn = document.getElementById("space");
+  spaceBtn.style.display = "none";
+  let saveBtn = document.getElementById("save");
+  saveBtn.style.display = "none";
 
-
-  let petronasBtn = document.getElementById('petronas');
-  petronasBtn.style.display = 'none';
-  let burjBtn = document.getElementById('burj');
-  burjBtn.style.display = 'none';
-  let granBtn = document.getElementById('gran');
-  granBtn.style.display = 'none';
-  let chryBtn = document.getElementById('chry');
-  chryBtn.style.display = 'none';
-  let tajBtn = document.getElementById('taj');
-  tajBtn.style.display = 'none';
-  let spaceBtn = document.getElementById('space');
-  spaceBtn.style.display = 'none';
-  let saveBtn = document.getElementById('save');
-  saveBtn.style.display = 'none';
-
-  let slideX = document.getElementById('sliderX');
-  slideX.style.display = 'none';
-  let slideY = document.getElementById('sliderY');
-  slideY.style.display = 'none';
-  let slideSize = document.getElementById('sliderSize');
-  slideSize.style.display = 'none';
-
-  let hori = document.getElementById('horitext');
-  hori.style.display = 'none';
-  let vertic = document.getElementById('vertitext');
-  vertic.style.display = 'none';
-  let sizet = document.getElementById('sizetext');
-  sizet.style.display = 'none';
-  let donet = document.getElementById('donetext');
-  donet.style.display = 'none';
-
-  let logo2 = document.getElementById('logoo');
-  logo2.style.display = 'none';
-
+  let slideX = document.getElementById("sliderX");
+  slideX.style.display = "none";
+  let slideY = document.getElementById("sliderY");
+  slideY.style.display = "none";
+  let slideSize = document.getElementById("sliderSize");
+  slideSize.style.display = "none";
 }
-
 
 function draw() {
   clear();
+  background(0);
   //console.log(mouseX, mouseY);
 
   noStroke();
   fill(92, 115, 120);
   rect(240, 120, 1000, 450, 10, 10);
   //tint(255, 128 + 128 * sin(millis() / 1000));
-  logo1 = image(logo, 1050, 7, 180, 180);
-  logo1.id('logoo');
-tint(255);
-fill("White");
+
+  if (frame == false) {
+
+    image(logo, 1050, 7, 180, 180);
+    fill(255);
+    text("Horizontal Slider:", 300, 630);
+
+    push();
+    translate(1280, 270);
+    rotate(radians(-90));
+    text("Vertical Slider:", 0, 0);
+    pop();
+
+    push();
+    translate(180, 570);
+    rotate(radians(-90));
+    sizetext = text("Size Slider:", 0, 0);
+    pop();
+
+    text("Done designing Your City?", 680, 680);
+  }
+  tint(255);
+  fill("White");
   //text("Design Your City, select builings here: ", 120, 30);
 
-  hori = text("Horizontal Slider:", 300, 630);
-  hori.id('horitext');
-
-  push();
-  translate(1280, 270);
-  rotate(radians(-90));
-  verti = text("Vertical Slider:", 0, 0);
-  verti.id('vertitext');
-
-  pop();
-
-  push();
-  translate(180, 570);
-  rotate(radians(-90));
-  sizetext = text("Size Slider:", 0, 0);
-  sizetext.id('sizetext');
-
-  pop();
-
-  donetext = text("Done designing Your City?", 680, 680);
-  donetext.id('donetext');
-
   if (buildings.length > 0) {
-
     let newestBuilding = buildings[buildings.length - 1];
     // scale(sliderSize.value());
     newestBuilding.x = sliderX.value();
     newestBuilding.y = sliderY.value();
 
     newestBuilding.scale = sliderSize.value();
+
+
   }
 
   // GH: call the draw method on all buildings
@@ -241,5 +245,13 @@ fill("White");
 
   if (frame == true) {
     framefunction();
+    image(spotlight, 0, 10, 600, 600);
+    image(spotlight, 400, 10, 600, 600);
+    image(spotlight, 800, 10, 600, 600);
+  }
+
+  if (tutorial == true) {
+    image(sizetut, 20, 570, 180, 180);
+    image(loctut, 1070, 580, 200, 200);
   }
 }

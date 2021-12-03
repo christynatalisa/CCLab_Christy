@@ -8,6 +8,125 @@
 
 }
 
+
+#sliderX:hover, #sliderY:hover, #sliderSize:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+#sliderX, #sliderY, #sliderSize {
+  -webkit-appearance: none;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+#sliderX::-webkit-slider-thumb, #sliderY::-webkit-slider-thumb, #sliderSize::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: rgb(92, 115, 120);
+  cursor: pointer;
+}
+
+#sliderX::-moz-range-thumb, #sliderY::-moz-range-thumb, #sliderSize::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+#petronas, #burj, #pisa, #chry, #taj, #space, #save {
+  display: inline-block;
+  padding: 5px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: rgb(92, 115, 120);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 9px #999;
+}
+
+#petronas:hover, #burj:hover, #pisa:hover, #chry:hover, #taj:hover, #space:hover, #save:hover {background-color: #3e8e41}
+
+#petronas:active, #burj:active, #pisa:active, #chry:active, #taj:active, #space:active, #save:active {
+  background-color: rgb(146, 148, 149);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#checkmark {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+#checkmark input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+#checkmark {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+#checkmark:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+#checkmark:checked + .slider {
+  background-color: #2196F3;
+}
+
+#checkmarkt:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+#checkmark:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+#checkmark.round {
+  border-radius: 34px;
+}
+
+#checkmark.round:before {
+  border-radius: 50%;
+}
+
 body {
 background-color: #000000;
 align-items: center;

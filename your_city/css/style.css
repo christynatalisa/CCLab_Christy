@@ -65,7 +65,7 @@
   transform: translateY(4px);
 }
 
-#checkmark {
+/* #checkmark {
   position: relative;
   display: inline-block;
   width: 60px;
@@ -73,14 +73,14 @@
 }
 
 /* Hide default HTML checkbox */
-#checkmark input {
+/* #checkmark input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
 /* The slider */
-#checkmark {
+/* #checkmark {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -89,10 +89,10 @@
   bottom: 0;
   background-color: #ccc;
   -webkit-transition: .4s;
-  transition: .4s;
+  transition: .4s; */ */ */
 }
 
-#checkmark:before {
+/* #checkmark:before {
   position: absolute;
   content: "";
   height: 26px;
@@ -119,17 +119,34 @@
 }
 
 /* Rounded sliders */
-#checkmark.round {
+/* #checkmark.round {
   border-radius: 34px;
 }
 
 #checkmark.round:before {
   border-radius: 50%;
-}
+} */
 
 body {
 background-color: #000000;
 align-items: center;
+justify-content: center;
+
+}
+
+.wrapper {
+    text-align: center;
+}
+
+.button {
+    position: absolute;
+    top: 65%;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 p {

@@ -29,9 +29,10 @@ function preload() {
 function setup() {
   createCanvas(1400, 800);
 
-  checkbox = createCheckbox('', false);
+  checkbox = createCheckbox('Tutorial', false);
   checkbox.changed(tutorialfunc);
   checkbox.position(130, 120);
+  checkbox.style('color', 'White');
   checkbox.id("checkmark");
 
   sliderX = createSlider(0, 1300, 0, 1);
@@ -49,10 +50,10 @@ function setup() {
   sliderSize.style("transform", "rotate(270deg)");
   sliderSize.id("sliderSize");
 
-  buttonT = createButton("tutorial");
-  buttonT.position(130, 90);
-  buttonT.id("tutorial");
-  buttonT.mousePressed(tutorialfunc);
+  // buttonT = createButton("tutorial");
+  // buttonT.position(130, 90);
+  // buttonT.id("tutorial");
+  // buttonT.mousePressed(tutorialfunc);
 
   buttonA = createButton("petronas");
   buttonA.position(250, 90);
@@ -120,8 +121,11 @@ class Building {
 
 function tutorialfunc() {
 
-  tutorial = true;
-
+  if (this.checked()) {
+      tutorial = true;
+    } else {
+      tutorial = false;
+    }
 }
 
 function towerImgA() {
@@ -191,6 +195,9 @@ function saveCity() {
   slideY.style.display = "none";
   let slideSize = document.getElementById("sliderSize");
   slideSize.style.display = "none";
+
+  let checkboxx = document.getElementById("checkmark");
+  checkboxx.style.display = "none";
 }
 
 function draw() {
@@ -221,7 +228,10 @@ function draw() {
     sizetext = text("Size Slider:", 0, 0);
     pop();
 
-    text("Done designing Your City?", 680, 680);
+    text("Design Your City, select buildings here: ", 250, 50);
+
+    text("Done designing Your City?", 680, 720);
+
   }
   tint(255);
   fill("White");

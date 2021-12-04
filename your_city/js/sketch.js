@@ -7,6 +7,7 @@ let frame = false;
 let tutorial = false;
 
 let imgs = []; // GH: array of images
+let click;
 let nextImg = 0; // GH: what the next image is
 let buildings = []; // GH: array of Building objects
 
@@ -23,6 +24,8 @@ function preload() {
   spotlight = loadImage("assets/spotlight.png");
   sizetut = loadImage("assets/sizetut.png");
   loctut = loadImage("assets/loctut.png");
+
+  click = loadSound('sounds/click.mp3');
 
 }
 
@@ -49,11 +52,6 @@ function setup() {
   sliderSize.position(120, 470);
   sliderSize.style("transform", "rotate(270deg)");
   sliderSize.id("sliderSize");
-
-  // buttonT = createButton("tutorial");
-  // buttonT.position(130, 90);
-  // buttonT.id("tutorial");
-  // buttonT.mousePressed(tutorialfunc);
 
   buttonA = createButton("petronas");
   buttonA.position(250, 90);
@@ -129,30 +127,36 @@ function tutorialfunc() {
 }
 
 function towerImgA() {
+  click.play();
   let petronasBuilding = new Building(imgs[0], 50, 300, 150, 400);
   buildings.push(petronasBuilding);
 }
 
 function towerImgB() {
+  click.play();
   let burjBuilding = new Building(imgs[1], 50, 300, 300, 360);
   buildings.push(burjBuilding);
 }
 
 function towerImgC() {
+  click.play();
   let pisaBuilding = new Building(imgs[2], 30, 200, 240, 300);
   buildings.push(pisaBuilding);
 }
 
 function towerImgD() {
+  click.play();
   let chryBuilding = new Building(imgs[3], 200, 300, 270, 470);
   buildings.push(chryBuilding);
 }
 function towerImgE() {
+  click.play();
   let tajBuilding = new Building(imgs[4], 150, 300, 270, 300);
   buildings.push(tajBuilding);
 }
 
 function towerImgF() {
+  click.play();
   let spaceBuilding = new Building(imgs[5], 150, 300, 240, 440);
   buildings.push(spaceBuilding);
 }
@@ -170,6 +174,7 @@ function saveCity() {
   //saveCanvas('myCanvas', 'png');
   //frame = True;
   //if (frame == True) {
+  click.play();
   framefunction();
   saveCanvas("myCanvas", "png");
   frame = true;
@@ -223,7 +228,7 @@ function draw() {
     pop();
 
     push();
-    translate(180, 570);
+    translate(180, 590);
     rotate(radians(-90));
     sizetext = text("Size Slider:", 0, 0);
     pop();
@@ -244,8 +249,6 @@ function draw() {
     newestBuilding.y = sliderY.value();
 
     newestBuilding.scale = sliderSize.value();
-
-
   }
 
   // GH: call the draw method on all buildings

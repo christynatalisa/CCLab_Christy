@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <title>Christy Natalisa - Your City</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/title.css">
+
+    <script src="js/p5.js"></script>
+    <script id ='title' src="js/title.js"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
@@ -12,14 +16,12 @@
   <body style="background-color: Black">
     <br>
 
-<div class="wrapper">
-  <img class="center" src="assets/yourcity.png" alt="" height="400" width="=400">
-  <br>
+  <link rel="stylesheet" href="css/title.css">
+  <button id='petronas' onclick="audio.play(); document.location='result.html';">Start</button>
+<script type="text/javascript">
+const audio = new Audio();
+audio.src = "sounds/click.mp3";
 
-  <button class = 'button' id='petronas' onclick="document.location='result.html'">Start</button>
-
-
-</div>
-
+</script>
   </body>
 </html>

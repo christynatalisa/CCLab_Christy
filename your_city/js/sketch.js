@@ -23,6 +23,8 @@ function preload() {
   logo = loadImage("assets/yourcity.png");
   spotlight = loadImage("assets/spotlight.png");
   sizetut = loadImage("assets/sizetut.png");
+
+
   loctut = loadImage("assets/loctut.png");
 
   click = loadSound('sounds/click.mp3');
@@ -87,6 +89,9 @@ function setup() {
   buttonG.position(700, 770);
   buttonG.id("save");
   buttonG.mousePressed(saveCity);
+
+  sizetut.resize(180*2, 180*2);
+  loctut.resize(200*2, 200*2);
 }
 
 class Building {
@@ -162,7 +167,7 @@ function towerImgF() {
 }
 
 function framefunction() {
-  fill(0);
+  fill(255);
   //add black rects to cover all the stuffs
   // rect(0, 10, 200, 800);
   // rect(0, 10, 800, 300);
@@ -237,7 +242,14 @@ function draw() {
 
     text("Done designing Your City?", 680, 720);
 
+    if (tutorial == true) {
+      image(sizetut, 20, 570, 180, 180);
+      //, 180, 180);
+      image(loctut, 1070, 580, 200, 200);
+    }
   }
+
+
   tint(255);
   fill("White");
   //text("Design Your City, select builings here: ", 120, 30);
@@ -258,13 +270,10 @@ function draw() {
 
   if (frame == true) {
     framefunction();
-    image(spotlight, 0, 10, 600, 600);
-    image(spotlight, 400, 10, 600, 600);
-    image(spotlight, 800, 10, 600, 600);
+    image(spotlight, 300, 10, 300, 600);
+    image(spotlight, 600, 10, 300, 600);
+    image(spotlight, 900, 10, 300, 600);
   }
 
-  if (tutorial == true) {
-    image(sizetut, 20, 570, 180, 180);
-    image(loctut, 1070, 580, 200, 200);
-  }
+
 }

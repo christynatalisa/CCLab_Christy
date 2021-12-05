@@ -1,3 +1,5 @@
+let click;
+
 function setup() {
   createCanvas(500, 500);
 
@@ -10,9 +12,13 @@ function preload() {
 
 }
 
+function redirectMe() {
+  window.location = 'result.html';
+}
+
 function next() {
   click.play();
-  window.location = 'result.html'
+  setTimeout(redirectMe, 1500);
 }
 
 function draw() {
@@ -26,4 +32,5 @@ function draw() {
   buttonA.position(680, 650);
   buttonA.id("petronas");
   buttonA.mousePressed(next);
+
 }

@@ -19,7 +19,6 @@ function draw() {
   background(0);
 
 
-
   tint(255, 128 + 128 * sin(millis() / 1000));
   image(logo, 50, 20, 400, 400);
 

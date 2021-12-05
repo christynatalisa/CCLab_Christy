@@ -6,6 +6,10 @@ let button;
 let frame = false;
 let tutorial = false;
 
+let rectfill = (92, 115, 120);
+let night = false;
+let stars = []
+
 let imgs = []; // GH: array of images
 let click;
 let nextImg = 0; // GH: what the next image is
@@ -19,20 +23,31 @@ function preload() {
   imgs.push(loadImage("assets/4.png"));
   imgs.push(loadImage("assets/5.png"));
   imgs.push(loadImage("assets/6.png"));
+  imgs.push(loadImage("assets/7.png"));
+  imgs.push(loadImage("assets/8.png"));
+  imgs.push(loadImage("assets/9.png"));
 
   logo = loadImage("assets/yourcity.png");
   spotlight = loadImage("assets/spotlight.png");
+  crowd = loadImage("assets/crowd.png");
+
   sizetut = loadImage("assets/sizetut.png");
-
-
   loctut = loadImage("assets/loctut.png");
 
   click = loadSound('sounds/click.mp3');
-
 }
 
 function setup() {
   createCanvas(1400, 800);
+
+  for (i = 0; i < 500; i++){
+
+		let star = {
+			x:random(240,1240),
+			y:random(180,630)
+		};
+		stars.push(star);
+	}
 
   checkbox = createCheckbox('Tutorial', false);
   checkbox.changed(tutorialfunc);
@@ -40,12 +55,12 @@ function setup() {
   checkbox.style('color', 'White');
   checkbox.id("checkmark");
 
-  sliderX = createSlider(0, 1300, 0, 1);
+  sliderX = createSlider(0, 1300, 200, 1);
   sliderX.position(550, 690);
   sliderX.style("width", "500 px");
   sliderX.id("sliderX");
 
-  sliderY = createSlider(0, 700, 0, 1);
+  sliderY = createSlider(0, 700, 200, 1);
   sliderY.position(1000, 470);
   sliderY.style("transform", "rotate(90deg)");
   sliderY.id("sliderY");
@@ -89,6 +104,31 @@ function setup() {
   buttonG.position(700, 770);
   buttonG.id("save");
   buttonG.mousePressed(saveCity);
+
+  buttonJ = createButton("pearl tower");
+  buttonJ.position(250, 145);
+  buttonJ.id("pearl");
+  buttonJ.mousePressed(towerImgJ);
+
+  buttonK = createButton("merlion");
+  buttonK.position(370, 145);
+  buttonK.id("merl");
+  buttonK.mousePressed(towerImgK);
+
+  buttonL = createButton("st basil");
+  buttonL.position(470, 145);
+  buttonL.id("basil");
+  buttonL.mousePressed(towerImgL);
+
+  buttonH = createButton("Night Time");
+  buttonH.position(120, 210);
+  buttonH.id("night");
+  buttonH.mousePressed(nightime);
+
+  buttonI = createButton("Day Time");
+  buttonI.position(120, 290);
+  buttonI.id("day");
+  buttonI.mousePressed(daytime);
 
   sizetut.resize(180*2, 180*2);
   loctut.resize(200*2, 200*2);
@@ -145,7 +185,7 @@ function towerImgB() {
 
 function towerImgC() {
   click.play();
-  let pisaBuilding = new Building(imgs[2], 30, 200, 240, 300);
+  let pisaBuilding = new Building(imgs[2], 30, 200, 260, 300);
   buildings.push(pisaBuilding);
 }
 
@@ -165,6 +205,36 @@ function towerImgF() {
   let spaceBuilding = new Building(imgs[5], 150, 300, 240, 440);
   buildings.push(spaceBuilding);
 }
+
+function towerImgJ() {
+  click.play();
+  let pearlBuilding = new Building(imgs[6], 150, 300, 210, 380);
+  buildings.push(pearlBuilding);
+}
+
+function towerImgK() {
+  click.play();
+  let merlBuilding = new Building(imgs[7], 150, 300, 280, 300);
+  buildings.push(merlBuilding);
+}
+
+function towerImgL() {
+  click.play();
+  let basilBuilding = new Building(imgs[8], 150, 300, 200, 300);
+  buildings.push(basilBuilding);
+}
+
+function nightime() {
+  click.play();
+  rectfill = '#050F58';
+  night = true;
+}
+
+function daytime() {
+  click.play();
+  rectfill = '#6FAFC6';
+}
+
 
 function framefunction() {
   fill(255);
@@ -198,6 +268,12 @@ function saveCity() {
   spaceBtn.style.display = "none";
   let saveBtn = document.getElementById("save");
   saveBtn.style.display = "none";
+  let pearlBtn = document.getElementById("pearl");
+  pearlBtn.style.display = "none";
+  let merlBtn = document.getElementById("merl");
+  merlBtn.style.display = "none";
+  let basilBtn = document.getElementById("basil");
+  basilBtn.style.display = "none";
 
   let slideX = document.getElementById("sliderX");
   slideX.style.display = "none";
@@ -206,6 +282,11 @@ function saveCity() {
   let slideSize = document.getElementById("sliderSize");
   slideSize.style.display = "none";
 
+  let nighttime = document.getElementById("night");
+  nighttime.style.display = "none";
+  let daytime = document.getElementById("day");
+  daytime.style.display = "none";
+
   let checkboxx = document.getElementById("checkmark");
   checkboxx.style.display = "none";
 }
@@ -213,18 +294,17 @@ function saveCity() {
 function draw() {
   clear();
   background(0);
-  //console.log(mouseX, mouseY);
 
   noStroke();
-  fill(92, 115, 120);
-  rect(240, 120, 1000, 450, 10, 10);
+  fill(rectfill);
+  rect(240, 180, 1000, 450, 10, 10);
   //tint(255, 128 + 128 * sin(millis() / 1000));
 
   if (frame == false) {
 
-    image(logo, 1050, 7, 180, 180);
+    image(logo, 1050, 67, 180, 180);
     fill(255);
-    text("Horizontal Slider:", 300, 630);
+    text("Horizontal Slider:", 300, 670);
 
     push();
     translate(1280, 270);
@@ -245,14 +325,9 @@ function draw() {
     if (tutorial == true) {
       image(sizetut, 20, 570, 180, 180);
       //, 180, 180);
-      image(loctut, 1070, 580, 200, 200);
+      image(loctut, 1070, 620, 200, 200);
     }
   }
-
-
-  tint(255);
-  fill("White");
-  //text("Design Your City, select builings here: ", 120, 30);
 
   if (buildings.length > 0) {
     let newestBuilding = buildings[buildings.length - 1];
@@ -273,7 +348,16 @@ function draw() {
     image(spotlight, 300, 10, 300, 600);
     image(spotlight, 600, 10, 300, 600);
     image(spotlight, 900, 10, 300, 600);
+    image(crowd, 100, 150, 1400, 700);
   }
 
+  if (night == true) {
 
+   for (i = 0; i < 500; i++){
+		let x = stars[i].x;
+		let y = stars[i].y;
+		fill(255);
+		ellipse(x,y,random(1,3),random(1,3));
+	}
+  }
 }

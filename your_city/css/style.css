@@ -42,7 +42,7 @@
   cursor: pointer;
 }
 
-#petronas, #burj, #pisa, #chry, #taj, #space, #save {
+#petronas, #burj, #pisa, #chry, #taj, #space, #save, #pearl, #merl, #basil {
   display: inline-block;
   padding: 5px 15px;
   font-size: 16px;
@@ -57,9 +57,32 @@
   box-shadow: 0 9px #999;
 }
 
-#petronas:hover, #burj:hover, #pisa:hover, #chry:hover, #taj:hover, #space:hover, #save:hover {background-color: #3e8e41}
+#petronas:hover, #burj:hover, #pisa:hover, #chry:hover, #taj:hover, #space:hover, #save:hover, #pearl:hover, #merl:hover, #basil:hover {background-color: #3e8e41}
 
-#petronas:active, #burj:active, #pisa:active, #chry:active, #taj:active, #space:active, #save:active {
+#petronas:active, #burj:active, #pisa:active, #chry:active, #taj:active, #space:active, #save:active, #pearl:active, #merl:active, #basil:active {
+  background-color: rgb(146, 148, 149);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#day, #night {
+  display: inline-block;
+  padding: 15px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: rgb(92, 115, 120);
+  border: none;
+  border-radius: 55px;
+  box-shadow: 0 9px #999;
+}
+
+#day:hover, #night:hover {background-color: #3e8e41}
+
+#day:active, #night:active {
   background-color: rgb(146, 148, 149);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
@@ -154,4 +177,8 @@ p {
   src: url("https://fonts.google.com/share?selection.family=Quicksand");
 
   color: white;
+}
+
+audio {
+  display:none;
 }

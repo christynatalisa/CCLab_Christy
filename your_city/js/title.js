@@ -11,7 +11,7 @@ function preload() {
 }
 
 function next() {
-  // click.play();
+  click.play();
   window.location = 'result.html'
 }
 

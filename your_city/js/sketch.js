@@ -35,6 +35,7 @@ function preload() {
   loctut = loadImage("assets/loctut.png");
 
   click = loadSound('sounds/click.mp3');
+  music = loadSound('sounds/song.mp3');
 }
 
 function setup() {
@@ -66,7 +67,7 @@ function setup() {
   sliderY.id("sliderY");
 
   sliderSize = createSlider(0, 2, 1, 0.05);
-  sliderSize.position(120, 470);
+  sliderSize.position(120, 570);
   sliderSize.style("transform", "rotate(270deg)");
   sliderSize.id("sliderSize");
 
@@ -121,14 +122,19 @@ function setup() {
   buttonL.mousePressed(towerImgL);
 
   buttonH = createButton("Night Time");
-  buttonH.position(120, 210);
+  buttonH.position(120, 310);
   buttonH.id("night");
   buttonH.mousePressed(nightime);
 
   buttonI = createButton("Day Time");
-  buttonI.position(120, 290);
+  buttonI.position(120, 390);
   buttonI.id("day");
   buttonI.mousePressed(daytime);
+
+  buttonM = createButton("🎵");
+  buttonM.position(140, 190);
+  buttonM.id("music");
+  buttonM.mousePressed(music);
 
   sizetut.resize(180*2, 180*2);
   loctut.resize(200*2, 200*2);
@@ -226,13 +232,17 @@ function towerImgL() {
 
 function nightime() {
   click.play();
-  rectfill = '#050F58';
+  rectfill = '#03082C';
   night = true;
 }
 
 function daytime() {
   click.play();
   rectfill = '#6FAFC6';
+}
+
+function music() {
+  song.play();
 }
 
 
@@ -313,7 +323,7 @@ function draw() {
     pop();
 
     push();
-    translate(180, 590);
+    translate(180, 690);
     rotate(radians(-90));
     sizetext = text("Size Slider:", 0, 0);
     pop();

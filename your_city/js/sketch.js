@@ -5,6 +5,7 @@ let sliderSize;
 let button;
 let frame = false;
 let tutorial = false;
+let checkbox;
 
 let rectfill = (92, 115, 120);
 let night = false;
@@ -42,17 +43,27 @@ function preload() {
   loctut = loadImage("assets/loctut.png");
 
   click = loadSound('sounds/click.mp3');
-  music = loadSound('sounds/song.mp3');
+  song = loadSound('sounds/song.mp3');
 }
 
 function setup() {
   createCanvas(1400, 800);
 
-  checkbox = createCheckbox('Tutorial', false);
-  checkbox.changed(tutorialfunc);
-  checkbox.position(130, 120);
-  checkbox.style('color', 'White');
-  checkbox.id("checkmark");
+  let label = createElement(
+    'Tutorial',
+    `<input id="toggle" type="checkbox" />
+     <span class="slider round"></span>`
+  );
+  label.position(130, 120);
+  label.addClass('switch');
+  checkbox = select('#toggle');
+  checkbox.changed(myCheckedEvent);
+  checkbox.id("toggle");
+
+  // checkbox = createCheckbox('Tutorial', false);
+  // checkbox.changed(tutorialfunc);
+  // checkbox.style('color', 'White');
+  // checkbox.id("checkmark");
 
   sliderX = createSlider(0, 1300, 200, 1);
   sliderX.position(550, 690);
@@ -165,15 +176,24 @@ class Building {
   move() {}
 }
 
-
-function tutorialfunc() {
-
+function myCheckedEvent() {
   if (this.checked()) {
-      tutorial = true;
-    } else {
-      tutorial = false;
-    }
+    tutorial = true;
+    console.log("Checking!");
+  } else {
+    tutorial = false;
+    console.log("Unchecking!");
+  }
 }
+
+// function tutorialfunc() {
+//
+//   if (this.checked()) {
+//
+//     } else {
+//
+//     }
+// }
 
 function towerImgA() {
   click.play();
@@ -245,9 +265,8 @@ function daytime() {
 
 function music() {
   click.play();
-  //song.play();
+  song.play();
 }
-
 
 function framefunction() {
   fill(255);
@@ -297,7 +316,7 @@ function saveCity() {
   nighttime.style.display = "none";
   let daytime = document.getElementById("day");
   daytime.style.display = "none";
-  let checkboxx = document.getElementById("checkmark");
+  let checkboxx = document.getElementById("toggle");
   checkboxx.style.display = "none";
   let musicbt = document.getElementById("music");
   musicbt.style.display = "none";
@@ -306,7 +325,6 @@ function saveCity() {
 function draw() {
   clear();
   background(0);
-
   noStroke();
   fill(rectfill);
   rect(240, 180, 1000, 450, 10, 10);
@@ -338,14 +356,6 @@ function draw() {
       image(sizetut, 20, 570, 180, 180);
       image(loctut, 1070, 620, 200, 200);
     }
-  }
-
-  if (frame == true) {
-    framefunction();
-    image(spotlight, 300, 10, 300, 600);
-    image(spotlight, 600, 10, 300, 600);
-    image(spotlight, 900, 10, 300, 600);
-    image(crowd, 100, 150, 1400, 700);
   }
 
   if (day == true) {
@@ -384,5 +394,13 @@ function draw() {
   // GH: call the draw method on all buildings
   for (let i = 0; i < buildings.length; i++) {
     buildings[i].display();
+  }
+
+  if (frame == true) {
+    framefunction();
+    image(spotlight, 300, 10, 300, 600);
+    image(spotlight, 600, 10, 300, 600);
+    image(spotlight, 900, 10, 300, 600);
+    image(crowd, 100, 150, 1400, 700);
   }
 }

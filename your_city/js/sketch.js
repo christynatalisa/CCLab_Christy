@@ -8,6 +8,8 @@ let tutorial = false;
 
 let rectfill = (92, 115, 120);
 let night = false;
+let day = false;
+
 let stars = []
 
 let imgs = []; // GH: array of images
@@ -30,6 +32,10 @@ function preload() {
   logo = loadImage("assets/yourcity.png");
   spotlight = loadImage("assets/spotlight.png");
   crowd = loadImage("assets/crowd.png");
+
+  cloud1 = loadImage("assets/cloud1.png");
+  cloud2 = loadImage("assets/cloud2.png");
+  cloud3 = loadImage("assets/cloud3.png");
 
   sizetut = loadImage("assets/sizetut.png");
   loctut = loadImage("assets/loctut.png");
@@ -238,10 +244,12 @@ function nightime() {
 
 function daytime() {
   click.play();
+  day = true;
   rectfill = '#6FAFC6';
 }
 
 function music() {
+  click.play();
   song.play();
 }
 
@@ -361,6 +369,12 @@ function draw() {
     image(crowd, 100, 150, 1400, 700);
   }
 
+  if (day == true) {
+    image(cloud1, 700, 300, 250, 100);
+    image(cloud2, 700, 200, 400, 100);
+    image(cloud3, 300, 200, 300, 200);
+}
+
   if (night == true) {
 
    for (i = 0; i < 500; i++){
@@ -368,6 +382,6 @@ function draw() {
 		let y = stars[i].y;
 		fill(255);
 		ellipse(x,y,random(1,3),random(1,3));
-	}
+	 }
   }
 }

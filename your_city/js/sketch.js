@@ -162,9 +162,6 @@ class Building {
   }
 
   display() {
-    // GH: added
-    // scale(this.scale);
-    // image(this.img, this.x, this.y, this.width, this.height);
 
     push();
     translate(this.x, this.y);

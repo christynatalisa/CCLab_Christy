@@ -36,6 +36,7 @@ function preload() {
   cloud1 = loadImage("assets/cloud1.png");
   cloud2 = loadImage("assets/cloud2.png");
   cloud3 = loadImage("assets/cloud3.png");
+  cloud4 = loadImage("assets/cloud4.png");
 
   sizetut = loadImage("assets/sizetut.png");
   loctut = loadImage("assets/loctut.png");
@@ -46,15 +47,6 @@ function preload() {
 
 function setup() {
   createCanvas(1400, 800);
-
-  for (i = 0; i < 500; i++){
-
-		let star = {
-			x:random(240,1240),
-			y:random(180,630)
-		};
-		stars.push(star);
-	}
 
   checkbox = createCheckbox('Tutorial', false);
   checkbox.changed(tutorialfunc);
@@ -92,18 +84,18 @@ function setup() {
   buttonC.id("pisa");
   buttonC.mousePressed(towerImgC);
 
-  buttonD = createButton("chrysler");
+  buttonD = createButton("cloud gate");
   buttonD.position(595, 90);
-  buttonD.id("chry");
+  buttonD.id("cloudgate");
   buttonD.mousePressed(towerImgD);
 
   buttonE = createButton("taj mahal");
-  buttonE.position(695, 90);
+  buttonE.position(710, 90);
   buttonE.id("taj");
   buttonE.mousePressed(towerImgE);
 
   buttonF = createButton("space needle");
-  buttonF.position(800, 90);
+  buttonF.position(815, 90);
   buttonF.id("space");
   buttonF.mousePressed(towerImgF);
 
@@ -203,8 +195,8 @@ function towerImgC() {
 
 function towerImgD() {
   click.play();
-  let chryBuilding = new Building(imgs[3], 200, 300, 270, 470);
-  buildings.push(chryBuilding);
+  let cloudgateBuilding = new Building(imgs[3], 200, 300, 300, 280);
+  buildings.push(cloudgateBuilding);
 }
 function towerImgE() {
   click.play();
@@ -232,25 +224,28 @@ function towerImgK() {
 
 function towerImgL() {
   click.play();
-  let basilBuilding = new Building(imgs[8], 150, 300, 200, 300);
+  let basilBuilding = new Building(imgs[8], 150, 300, 250, 300);
   buildings.push(basilBuilding);
 }
 
 function nightime() {
   click.play();
   rectfill = '#03082C';
+  day = false;
   night = true;
+
 }
 
 function daytime() {
   click.play();
+  night = false;
   day = true;
   rectfill = '#6FAFC6';
 }
 
 function music() {
   click.play();
-  song.play();
+  //song.play();
 }
 
 
@@ -264,9 +259,7 @@ function framefunction() {
 }
 
 function saveCity() {
-  //saveCanvas('myCanvas', 'png');
-  //frame = True;
-  //if (frame == True) {
+
   click.play();
   framefunction();
   saveCanvas("myCanvas", "png");
@@ -278,8 +271,8 @@ function saveCity() {
   burjBtn.style.display = "none";
   let pisaBtn = document.getElementById("pisa");
   pisaBtn.style.display = "none";
-  let chryBtn = document.getElementById("chry");
-  chryBtn.style.display = "none";
+  let cloudBtn = document.getElementById("cloudgate");
+  cloudBtn.style.display = "none";
   let tajBtn = document.getElementById("taj");
   tajBtn.style.display = "none";
   let spaceBtn = document.getElementById("space");
@@ -304,9 +297,10 @@ function saveCity() {
   nighttime.style.display = "none";
   let daytime = document.getElementById("day");
   daytime.style.display = "none";
-
   let checkboxx = document.getElementById("checkmark");
   checkboxx.style.display = "none";
+  let musicbt = document.getElementById("music");
+  musicbt.style.display = "none";
 }
 
 function draw() {
@@ -342,9 +336,40 @@ function draw() {
 
     if (tutorial == true) {
       image(sizetut, 20, 570, 180, 180);
-      //, 180, 180);
       image(loctut, 1070, 620, 200, 200);
     }
+  }
+
+  if (frame == true) {
+    framefunction();
+    image(spotlight, 300, 10, 300, 600);
+    image(spotlight, 600, 10, 300, 600);
+    image(spotlight, 900, 10, 300, 600);
+    image(crowd, 100, 150, 1400, 700);
+  }
+
+  if (day == true) {
+    image(cloud1, 900, 300, 250, 100);
+    image(cloud2, 700, 200, 300, 200);
+    image(cloud3, 300, 200, 300, 200);
+    image(cloud4, 500, 300, 300, 160);
+}
+
+  if (night == true) {
+    for (i = 0; i < 500; i++){
+
+  		let star = {
+  			x:random(240,1240),
+  			y:random(180,630)
+  		};
+  		stars.push(star);
+  	}
+   for (i = 0; i < 500; i++){
+		let x = stars[i].x;
+		let y = stars[i].y;
+		fill(255);
+		ellipse(x,y,random(1,3),random(1,3));
+	 }
   }
 
   if (buildings.length > 0) {
@@ -359,29 +384,5 @@ function draw() {
   // GH: call the draw method on all buildings
   for (let i = 0; i < buildings.length; i++) {
     buildings[i].display();
-  }
-
-  if (frame == true) {
-    framefunction();
-    image(spotlight, 300, 10, 300, 600);
-    image(spotlight, 600, 10, 300, 600);
-    image(spotlight, 900, 10, 300, 600);
-    image(crowd, 100, 150, 1400, 700);
-  }
-
-  if (day == true) {
-    image(cloud1, 700, 300, 250, 100);
-    image(cloud2, 700, 200, 400, 100);
-    image(cloud3, 300, 200, 300, 200);
-}
-
-  if (night == true) {
-
-   for (i = 0; i < 500; i++){
-		let x = stars[i].x;
-		let y = stars[i].y;
-		fill(255);
-		ellipse(x,y,random(1,3),random(1,3));
-	 }
   }
 }

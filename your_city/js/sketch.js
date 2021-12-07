@@ -60,11 +60,6 @@ function setup() {
   checkbox.changed(myCheckedEvent);
   checkbox.id("toggle");
 
-  // checkbox = createCheckbox('Tutorial', false);
-  // checkbox.changed(tutorialfunc);
-  // checkbox.style('color', 'White');
-  // checkbox.id("checkmark");
-
   sliderX = createSlider(0, 1300, 200, 1);
   sliderX.position(550, 690);
   sliderX.style("width", "500 px");
@@ -182,15 +177,6 @@ function myCheckedEvent() {
     console.log("Unchecking!");
   }
 }
-
-// function tutorialfunc() {
-//
-//   if (this.checked()) {
-//
-//     } else {
-//
-//     }
-// }
 
 function towerImgA() {
   click.play();
@@ -313,10 +299,13 @@ function saveCity() {
   nighttime.style.display = "none";
   let daytime = document.getElementById("day");
   daytime.style.display = "none";
-  let checkboxx = document.getElementById("toggle");
-  checkboxx.style.display = "none";
   let musicbt = document.getElementById("music");
   musicbt.style.display = "none";
+
+  let checkbox = document.getElementById("toggle");
+  checkbox.style.display = "none";
+  let checkboxx = document.getElementsByClassName("switch");
+  checkboxx.style.display = "none";
 }
 
 function draw() {
@@ -383,7 +372,6 @@ function draw() {
 
   if (buildings.length > 0) {
     let newestBuilding = buildings[buildings.length - 1];
-    // scale(sliderSize.value());
     newestBuilding.x = sliderX.value();
     newestBuilding.y = sliderY.value();
 

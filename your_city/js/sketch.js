@@ -50,11 +50,11 @@ function setup() {
   createCanvas(1400, 800);
 
   let label = createElement(
-    'Tutorial',
+    'label',
     `<input id="toggle" type="checkbox" />
      <span class="slider round"></span>`
   );
-  label.position(130, 120);
+  label.position(140, 120);
   label.addClass('switch');
   checkbox = select('#toggle');
   checkbox.changed(myCheckedEvent);
@@ -346,6 +346,8 @@ function draw() {
     pop();
 
     text("Design Your City, select buildings here: ", 250, 50);
+    text("Tutorial Switch ", 120, 70);
+
 
     text("Done designing Your City?", 680, 720);
 

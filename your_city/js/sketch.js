@@ -55,7 +55,7 @@ function setup() {
      <span class="slider round"></span>`
   );
   label.position(140, 120);
-  label.addClass('switch');
+  label.id('switch');
   checkbox = select('#toggle');
   checkbox.changed(myCheckedEvent);
   checkbox.id("toggle");
@@ -252,9 +252,9 @@ function music() {
 }
 
 function framefunction() {
-  fill(255);
+  fill(0);
   //add black rects to cover all the stuffs
-  // rect(0, 10, 200, 800);
+  rect(0, 0, 200, 300);
   // rect(0, 10, 800, 300);
   // rect(900, 10, 300, 900);
   // rect(10, 900, 900, 300);
@@ -302,10 +302,13 @@ function saveCity() {
   let musicbt = document.getElementById("music");
   musicbt.style.display = "none";
 
-  let checkbox = document.getElementById("toggle");
-  checkbox.style.display = "none";
-  let checkboxx = document.getElementsByClassName("switch");
+  let checkboxx = document.getElementById("switch");
   checkboxx.style.display = "none";
+  // let switchh = document.getElementByClassName("switch");
+  // switchh.style.display = "none";
+  // let sliderr = document.getElementByClassName("slider.round");
+  // console.log(sliderr);
+  // sliderr.style.display = "none";
 }
 
 function draw() {

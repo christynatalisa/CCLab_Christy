@@ -264,7 +264,7 @@ function saveCity() {
 
   click.play();
   framefunction();
-  saveCanvas("myCanvas", "png");
+  //saveCanvas("myCanvas", "png");
   frame = true;
 
   let petronasBtn = document.getElementById("petronas");
